@@ -10,7 +10,7 @@
                 <h1>Find your dream job</h1>
                 <p>Thounsands of jobs available.</p>
                 <div class="banner-btn mt-5"><a href="#" class="btn btn-primary mb-4 mb-sm-0">Explore Now</a></div>
-            </div>
+            </div> 
         </div>
     </div>
 </section>
