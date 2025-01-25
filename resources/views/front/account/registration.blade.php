@@ -9,15 +9,18 @@
             <div class="col-md-5">
                 <div class="card shadow border-0 p-5">
                     <h1 class="h3">Register</h1>
+
                     <form action="" name="registrationForm" id="registrationForm">
                         <div class="mb-3">
                             <label for="" class="mb-2">Name*</label>
                             <input type="text" name="name" id="name" class="form-control" placeholder="Enter Name">
                             <p></p>
+
                         </div> 
                         <div class="mb-3">
                             <label for="" class="mb-2">Email*</label>
                             <input type="text" name="email" id="email" class="form-control" placeholder="Enter Email">
+
                             <p></p>
                         </div> 
                         <div class="mb-3">
@@ -35,11 +38,13 @@
                 </div>
                 <div class="mt-4 text-center">
                     <p>Have an account? <a  href="login.html">Login</a></p>
+
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 @endsection
 
 @section('customJs')
@@ -133,4 +138,5 @@
 
     });
 </script>
+
 @endsection

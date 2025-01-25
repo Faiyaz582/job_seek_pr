@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -54,7 +55,17 @@ class AccountController extends Controller
      }
 
      //this method will shiw user login page
-     public function login(){
-
+     public function login () {
+        return view ('front.account.login');
      }
+
+     public function profile () {
+        return view ('front.account.profile');
+     }
+       
+    //  public function logout () {
+    //     Auth::logout();
+    //     return redirect ()->route('front.account.login');
+    //  }
 }
+
