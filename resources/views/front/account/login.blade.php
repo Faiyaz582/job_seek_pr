@@ -4,6 +4,13 @@
 <section class="section-5">
     <div class="container my-5">
         <div class="py-lg-2">&nbsp;</div>
+
+        @if(Session::has('success'))
+        <div class="alert alert-success">
+            <p class="mb-0 pb-0">{{ Session::get('success') }}</p>
+        </div>
+        @endif
+
         <div class="row d-flex justify-content-center">
             <div class="col-md-5">
                 <div class="card shadow border-0 p-5">
@@ -24,7 +31,7 @@
                     </form>                    
                 </div>
                 <div class="mt-4 text-center">
-                    <p>Do not have an account? <a  href="{{ route ('front.account.registration') }}">Register</a></p>
+                    <p>Do not have an account? <a  href="{{ route ('account.registration') }}">Register</a></p>
                 </div>
             </div>
         </div>
