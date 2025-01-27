@@ -21,10 +21,26 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 
-Route::get('/account/register',[AccountController::class,'registration'])->name('account.registration');
-Route::post('/account/process-register',[AccountController::class,'processRegistration'])->name('account.processRegistration');
-Route::get('/account/login',[AccountController::class,'login'])->name('front.account.login');
-Route::get('/account/profile',[AccountController::class,'profile'])->name('front.account.profile');
+
+
+//redirect the guest route back to guest route without authentication
+
+Route::group(['account'],function(){
+      //Guest Route
+      Route::group(['middleware'=>'guest'],function(){
+          Route::get('/account/register',[AccountController::class,'registration'])->name('front.account.registration');
+          Route::post('/account/process-register',[AccountController::class,'processRegistration'])->name('front.account.processRegistration');
+          Route::post('/account/authenticate',[AccountController::class,'authenticate'])->name('front.account.authenticate');
+          Route::get('/account/login',[AccountController::class,'login'])->name('front.account.login');
+      });
+
+      //Authenticated Routes
+      Route::group(['middleware'=>'auth'],function(){
+        Route::get('/account/profile',[AccountController::class,'profile'])->name('front.account.profile');
+        Route::get('/account/logout',[AccountController::class,'logout'])->name('front.account.logout');          
+    });
+});
 
 
 
+                                                                                                                           
