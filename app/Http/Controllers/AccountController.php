@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -47,14 +48,14 @@ class AccountController extends Controller
         }else{
             return response()->json([
                 'status'=>false,
-                'errors'=>$validator->errors()
+                'errors'=>$validator->errors(),
             ]);
         
         }
 
      }
 
-     //this method will shiw user login page
+     //this method will show user login page
      public function login () {
         return view ('front.account.login');
      }
@@ -63,9 +64,37 @@ class AccountController extends Controller
         return view ('front.account.profile');
      }
        
-    //  public function logout () {
-    //     Auth::logout();
-    //     return redirect ()->route('front.account.login');
-    //  }
+
+    public function authenticate(Request $request){
+        //for validation
+        
+        $validator=Validator::make($request->all(),[
+            'email'=>'required|email',
+            'password'=>'required'
+        ]);
+
+        if($validator->passes()){
+           
+            if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+               return redirect()->route('front.account.profile');
+
+            }else{
+                return redirect()->route('front.account.login')
+                ->with('error','Either email/password is incorrect');
+            }
+        }
+        else{
+            //redirect to route page with validation errors and email is not required next time for login
+            return redirect()->route('front.account.login')
+            ->withErrors($validator)
+            ->withInput($request->only('email'));
+        }    
+        
+    }    
+
+     public function logout () {
+        Auth::logout();
+        return redirect ()->route('front.account.login');
+     }
 }
 
