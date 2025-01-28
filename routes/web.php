@@ -37,7 +37,10 @@ Route::group(['account'],function(){
       //Authenticated Routes
       Route::group(['middleware'=>'auth'],function(){
         Route::get('/account/profile',[AccountController::class,'profile'])->name('front.account.profile');
-        Route::get('/account/logout',[AccountController::class,'logout'])->name('front.account.logout');          
+        Route::put('/account/update-profile',[AccountController::class,'updateProfile'])->name('front.account.updateProfile');    
+        Route::get('/account/logout',[AccountController::class,'logout'])->name('front.account.logout');  
+        Route::post('/account/update-profile-pic',[AccountController::class,'updateProfilePic'])->name('front.account.updateProfilePic');      
+
     });
 });
 

@@ -15,6 +15,8 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
+
+            //if user try to go to profile page without login then authenticate middleware will redirect to login page
             return route('front.account.login');
         }
     }
