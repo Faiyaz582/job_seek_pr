@@ -27,8 +27,7 @@
                         <h3 class="fs-4 mb-1">My Profile</h3>
                         <div class="mb-4">
                             <label for="" class="mb-2">Name*</label>
-                            <input type="text" name="name" id="name" placeholder="Enter Name" class="form-control" value="
-                            {{$user->name}}">
+                            <input type="text" name="name" id="name" placeholder="Enter Name" class="form-control" value="{{$user->name}}">
                             <p></p>
                         </div>
                         <div class="mb-4">
