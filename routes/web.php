@@ -39,7 +39,10 @@ Route::group(['account'],function(){
         Route::get('/account/profile',[AccountController::class,'profile'])->name('front.account.profile');
         Route::put('/account/update-profile',[AccountController::class,'updateProfile'])->name('front.account.updateProfile');    
         Route::get('/account/logout',[AccountController::class,'logout'])->name('front.account.logout');  
-        Route::post('/account/update-profile-pic',[AccountController::class,'updateProfilePic'])->name('front.account.updateProfilePic');      
+        Route::post('/account/update-profile-pic',[AccountController::class,'updateProfilePic'])->name('front.account.updateProfilePic'); 
+        Route::get('/create-job',[AccountController::class,'createJob'])->name('account.createJob');  
+        Route::post('/save-job',[AccountController::class,'saveJob'])->name('account.saveJob');
+        Route::get('/account/my-jobs',[AccountController::class,'myJobs'])->name('account.myJobs');        
 
     });
 });
