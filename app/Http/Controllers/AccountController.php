@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Category;
+use App\Models\JobType;
+use App\Models\job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -192,5 +194,73 @@ class AccountController extends Controller
             ]);
         }
      }
+
+
+     public function createJob(){
+
+        $Categories= Category::orderBy('name', 'ASC')->where('status',1)->get();
+        $JobTypes = JobType::orderBy('name', 'ASC')->where('status',1)->get();
+        return view('front.account.job.create', [
+            'categories'=>$Categories,
+            'jobTypes'=>$JobTypes,
+
+        ]);
+     }
+
+     public function saveJob(Request $request)
+     {
+         // Define validation rules
+         $rules = [
+             'title' => 'required|min:5|max:200',
+             'category' => 'required',
+             'jobType' => 'required',
+             'vacancy' => 'required|integer',
+             'job_location' => 'required|max:50',
+             'description' => 'required',
+             'company_name' => 'required|min:3|max:75',
+         ];
+     
+         // Run validation
+         $validator = Validator::make($request->all(), $rules);
+     
+         if ($validator->fails()) {
+             return response()->json([
+                 'status' => false,
+                 'errors' => $validator->errors(),
+             ]);
+         }
+     
+         // Store Job
+         $job = new Job();
+         $job->title = $request->title;
+         $job->category_id = $request->category;
+         $job->job_type_id = $request->jobType;
+         $job->vacancy = $request->vacancy;
+         $job->salary = $request->salary;
+         $job->location = $request->job_location;  
+         $job->description = $request->description;
+         $job->benefits = $request->benefits;
+         $job->responsibilities = $request->responsibility;
+         $job->qualification = $request->qualifications;
+         $job->experience = $request->experience;
+         $job->keywords = $request->keywords;
+         $job->company_name = $request->company_name;
+         $job->company_location = $request->company_location;
+         $job->company_website = $request->website;
+         $job->save();
+     
+         session()->flash('success', 'Job added successfully');
+     
+         return response()->json([
+             'status' => true,
+             'message' => 'Job saved successfully',
+         ]);
+     }
+     
+
+
+public function myJobs(){
+    
 }
 
+}
