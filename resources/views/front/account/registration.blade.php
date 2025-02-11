@@ -53,7 +53,7 @@
         e.preventDefault();
         
         $.ajax({
-            url:'{{ route("account.processRegistration") }}',
+            url:'{{ route("front.account.processRegistration") }}',
             type:'post',
             data: $('#registrationForm').serializeArray(),
             dataType:'json',
