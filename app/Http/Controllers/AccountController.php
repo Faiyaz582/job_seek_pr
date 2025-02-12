@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\JobType;
-use App\Models\job;
+use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -235,6 +235,7 @@ class AccountController extends Controller
          $job->title = $request->title;
          $job->category_id = $request->category;
          $job->job_type_id = $request->jobType;
+         $job->user_id =Auth::user()->id;
          $job->vacancy = $request->vacancy;
          $job->salary = $request->salary;
          $job->location = $request->job_location;  
@@ -260,7 +261,12 @@ class AccountController extends Controller
 
 
 public function myJobs(){
+    $jobs = Job::where('user_id',Auth::user()->id)->with('jobType')->paginate(10);
     
+
+    return view('front.account.job.myJobs',[
+        'jobs'=> $jobs
+    ]);
 }
 
 }
