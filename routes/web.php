@@ -40,10 +40,11 @@ Route::group(['account'],function(){
         Route::put('/account/update-profile',[AccountController::class,'updateProfile'])->name('front.account.updateProfile');    
         Route::get('/account/logout',[AccountController::class,'logout'])->name('front.account.logout');  
         Route::post('/account/update-profile-pic',[AccountController::class,'updateProfilePic'])->name('front.account.updateProfilePic'); 
-        Route::get('/create-job',[AccountController::class,'createJob'])->name('account.createJob');  
-        Route::post('/save-job',[AccountController::class,'saveJob'])->name('account.saveJob');
-        Route::get('/account/my-jobs',[AccountController::class,'myJobs'])->name('account.myJobs');        
-
+        Route::get('/account/create-job',[AccountController::class,'createJob'])->name('front.account.createJob');  
+        Route::post('/account/save-job',[AccountController::class,'saveJob'])->name('front.account.saveJob');
+        Route::get('/account/my-jobs',[AccountController::class,'myJobs'])->name('front.account.myJobs');        
+        Route::post('/account/update-job/{jobId}',[AccountController::class,'updateJob'])->name('front.account.updateJob'); 
+        Route::get('/account/my-jobs/edit/{jobId}',[AccountController::class,'editJob'])->name('front.account.editJob');       
     });
 });
 
