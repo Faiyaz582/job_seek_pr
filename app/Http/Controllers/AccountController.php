@@ -339,5 +339,25 @@ public function updateJob(Request $request,$id)
              'status' => true,
              'message' => 'Job saved successfully',
          ]);
-     }
+     }  
+     
+     public function deleteJob(Request $request){
+        $job=Job::where([
+          'user_id'=>Auth::user()->id, //only that particular user can edit,for logged in user id
+          'id'=>$request->jobId
+        ])->first();
+
+        if($job==null){
+          session()->flash('error','Either job deleted or not found');
+          return response()->json([
+              'status'=>true
+          ]);
+        }
+
+        Job::where('id',$request->jobId)->delete();
+        session()->flash('success','Job deleted successfully');
+          return response()->json([
+              'status'=>true
+          ]);
+   }
 }
