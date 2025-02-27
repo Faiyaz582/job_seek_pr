@@ -66,4 +66,24 @@ class JobsController extends Controller
 
         ]);
     }
+
+
+    //this method will show job detail page
+    public function detail ($id) {
+
+        $job = Job::where([
+                            'id'=> $id, 
+                            'status' => 1 //active jobs e dekhabe shudhu eta diye
+                        ])->With (['jobType', 'category'])-> first();
+            
+        if($job == null){
+            abort(404);
+        }
+
+       // dd($job);
+ // This will output the full $job object and show you all its properties.
+
+
+        return view('front.jobDetail', ['job' => $job]);
+    }
 }

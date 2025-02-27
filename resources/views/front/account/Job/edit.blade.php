@@ -21,7 +21,7 @@
                 @include('front.layouts.message')
 
                 {{-- Job Details --}}
-                <form action="{{ route('front.account.saveJob') }}" method="post" id="editJobForm" name="editJobForm>
+                <form action="{{ route('front.account.saveJob') }}" method="post" id="editJobForm" name="editJobForm">
                     @csrf
                     <div class="card border-0 shadow p-4">
                         <h3>Edit Job Details</h3>
