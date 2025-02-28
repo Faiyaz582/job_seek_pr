@@ -51,7 +51,10 @@ Route::group(['account'],function(){
         Route::post('/account/update-job/{jobId}',[AccountController::class,'updateJob'])->name('front.account.updateJob'); 
         Route::get('/account/my-jobs/edit/{jobId}',[AccountController::class,'editJob'])->name('front.account.editJob');
         Route::post('/account/delete-job',[AccountController::class,'deleteJob'])->name('front.account.deleteJob');        
-    });
+        Route::get('/account/my-job-applications',[AccountController::class,'myJobApplications'])->name('front.account.myJobApplications');        
+        Route::post('/account/remove-job-applications',[AccountController::class,'removeJobs'])->name('front.account.removeJobs'); 
+        
+      });
 });
 
 
