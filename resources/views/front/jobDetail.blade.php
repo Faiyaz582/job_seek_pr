@@ -37,8 +37,8 @@
                                 </div>
                             </div>
                             <div class="jobs_right">
-                                <div class="apply_now">
-                                    <a class="heart_mark" href="#"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                <div class="apply_now {{ ($count==1) ? 'saved-job' : '' }}">
+                                    <a class="heart_mark" href="javascript:void(0);"onClick="saveJob({{ $job->id }})"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,13 @@
                         
                         <div class="border-bottom"></div>
                         <div class="pt-3 text-end">
-                            <a href="#" class="btn btn-secondary">Save</a>
+                            
+
+                            @if(Auth::check())
+                            <a href="#" onclick="saveJob({{ $job->id }})" class="btn btn-secondary">Save</a>
+                            @else 
+                                <a href="javascript:void(0)" class="btnbtn-secondary disabled">Login to Save</a>
+                            @endif 
 
                             @if(Auth::check())
                                  <a href="#" onClick="applyJob({{ $job->id }})" class="btn btn-primary">Apply</a>
@@ -156,6 +162,24 @@
                 }
             });
         }
+    }
+    function saveJob(id){
+        $.ajax({
+                url: "{{ route('saveJob') }}",
+                type:'post',
+                data: {id:id},
+                dataType:'json',
+                success:function(response){
+                    // Check if the response status is false
+                    if (response.status === false) {
+                        // Show the error message
+                        alert(response.message); // You can also display this in a modal or a div
+                    } else {
+                        // Refresh the page or do something else for successful application
+                        window.location.href="{{ url()->current() }}";
+                    }
+                }
+            });
     }
 </script>
 
