@@ -390,6 +390,7 @@ public function updateJob(Request $request,$id)
             ]);
    }
 
+//    Saved Jobs
    public function savedJobs()
    {
         // $jobApplications=JobApplication::where('user_id',Auth::user()->id)

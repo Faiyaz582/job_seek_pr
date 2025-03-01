@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('main')
-
+{{-- Home --}}
 
 <section class="section-0 lazy d-flex bg-image-style dark align-items-center "   class="" data-bg="{{ asset('assets/images/banner5.jpg') }}">
     <div class="container">

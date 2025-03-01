@@ -1,5 +1,5 @@
 @extends('front.layouts.app')
-
+{{-- jOb Details --}}
 @section('main')
 <section class="section-4 bg-2">    
     <div class="container pt-5">
@@ -74,7 +74,7 @@
                         <div class="border-bottom"></div>
                         <div class="pt-3 text-end">
                             
-
+                            {{-- Loged in can save and apply --}}
                             @if(Auth::check())
                             <a href="#" onclick="saveJob({{ $job->id }})" class="btn btn-secondary">Save</a>
                             @else 

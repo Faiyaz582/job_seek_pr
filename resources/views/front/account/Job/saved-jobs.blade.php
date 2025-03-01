@@ -1,4 +1,4 @@
-
+{{-- Saved Page --}}
 @extends('front.layouts.app')
 
 @section('main')

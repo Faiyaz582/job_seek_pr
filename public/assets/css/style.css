@@ -10019,7 +10019,7 @@ footer .nav-link {
 .icon-handshake:before {
   content: '';
 }
-/* '' */
+/* for saved jobs*/
 .saved-job a{
   background: #00D363 !important;
   color: #fff;

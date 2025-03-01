@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Job;
 use Illuminate\Http\Request;
-
+// Searching
 class HomeController extends Controller
 {
     //Method to show Home Page

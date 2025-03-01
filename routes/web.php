@@ -1,5 +1,5 @@
 <?php
-
+// Routing
 use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
