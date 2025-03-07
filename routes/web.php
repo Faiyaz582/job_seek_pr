@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\UserController;
 
 /*
@@ -35,6 +36,7 @@ Route::group(['prefix'=>'admin','middleware'=>'checkRole'],function(){
   Route::get('/users/{id}',[UserController::class,'edit'])->name('admin.users.edit');
   Route::put('/users/{id}',[UserController::class,'update'])->name('admin.users.update');
   Route::delete('/users',[UserController::class,'destroy'])->name('admin.users.delete');
+  Route::get('/jobs',[JobController::class,'index'])->name('admin.jobs');
 
 
 
