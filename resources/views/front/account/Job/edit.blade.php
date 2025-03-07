@@ -77,7 +77,7 @@
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <label class="form-label">Description</label>
-                                <textarea name="description" class="form-control" rows="3" placeholder="Description">{{$job->description}}</textarea>
+                                <textarea name="description" class="textarea" rows="3" placeholder="Description">{{$job->description}}</textarea>
                            <p></p>
                             </div>
                         </div>
@@ -85,19 +85,19 @@
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <label class="form-label">Benefits</label>
-                                <textarea name="benefits" class="form-control" rows="3" placeholder="Benefits">{{$job->benefits}}</textarea>
+                                <textarea name="benefits" class="textarea" rows="3" placeholder="Benefits">{{$job->benefits}}</textarea>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <label class="form-label">Responsibility</label>
-                                <textarea name="responsibility" class="form-control" rows="3" placeholder="Responsibility">{{$job->responsibility}}</textarea>
+                                <textarea name="responsibility" class="textarea" rows="3" placeholder="Responsibility">{{$job->responsibility}}</textarea>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <label class="form-label">Qualifications</label>
-                                <textarea name="qualifications" class="form-control" rows="3" placeholder="Qualifications">{{$job->qualifications}}</textarea>
+                                <textarea name="qualifications" class="textarea" rows="3" placeholder="Qualifications">{{$job->qualifications}}</textarea>
                             </div>
                         </div>
 

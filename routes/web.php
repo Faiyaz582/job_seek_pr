@@ -4,6 +4,8 @@ use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobsController;
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,11 +29,16 @@ Route::post('/apply-job', [JobsController::class, 'applyJob'])->name('applyJob')
 Route::post('/save-job', [JobsController::class, 'saveJob'])->name('saveJob');
 
 
+Route::group(['prefix'=>'admin','middleware'=>'checkRole'],function(){
+  Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
+  Route::get('/users',[UserController::class,'index'])->name('admin.users');
+
+});
 
 
 //redirect the guest route back to guest route without authentication
 
-Route::group(['account'],function(){
+Route::group(['prefix'=>'account'],function(){
       //Guest Route
       Route::group(['middleware'=>'guest'],function(){
           Route::get('/account/register',[AccountController::class,'registration'])->name('front.account.registration');

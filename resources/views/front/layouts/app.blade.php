@@ -9,6 +9,7 @@
 	<meta name="pinterest" content="nopin" />
 	<meta name="csrf-token" content="{{ csrf_token() }}"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/ui/trumbowyg.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" />
 	<!-- Fav Icon -->
 	<link rel="shortcut icon" type="image/x-icon" href="#" />
@@ -33,7 +34,11 @@
 				<!-- checks if user is logged in -->
 				@if(!Auth::check())
 				<a class="btn btn-outline-primary me-2" href= "{{ route ('front.account.login') }}" type="submit">Login</a>
-				@else <a class="btn btn-outline-primary me-2" href= "{{ route ('front.account.profile') }}" type="submit">Account</a>
+				@else 
+					@if(Auth::user()->role == 'admin') 
+						<a class="btn btn-outline-primary me-2" href= "{{ route ('admin.dashboard') }}" type="submit">Admin</a>
+					@endif
+				<a class="btn btn-outline-primary me-2" href= "{{ route ('admin.dashboard') }}" type="submit">Account</a>
 				@endif
 				
 				<a class="btn btn-primary" href="{{ route('front.account.createJob') }}" type="submit">Post a Job</a>
@@ -78,9 +83,12 @@
 <script src="{{ asset('assets/js/bootstrap.bundle.5.1.3.min.js') }}"></script>
 <script src="{{ asset('assets/js/instantpages.5.1.0.min.js') }}"></script>
 <script src="{{ asset('assets/js/lazyload.17.6.0.min.js') }}"></script>
+<script src=" https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/trumbowyg.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 
-<script> 
+<script>
+	$('.textarea').trumbowyg();
+
 	$.ajaxSetup({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
