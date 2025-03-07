@@ -34,6 +34,7 @@ Route::group(['prefix'=>'admin','middleware'=>'checkRole'],function(){
   Route::get('/users',[UserController::class,'index'])->name('admin.users');
   Route::get('/users/{id}',[UserController::class,'edit'])->name('admin.users.edit');
   Route::put('/users/{id}',[UserController::class,'update'])->name('admin.users.update');
+  Route::delete('/users',[UserController::class,'destroy'])->name('admin.users.delete');
 
 
 
