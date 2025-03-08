@@ -92,7 +92,7 @@
    function removeJob(id){
      if(confirm("Are you sure you want to remove?")){
          $.ajax({
-             url:'{{route("front.account.removeSavedJobs")}}',
+             url: '{{ route("front.account.removeSavedJob") }}',
              type:'post',
              data:{id:id},
              dataType:'json',
