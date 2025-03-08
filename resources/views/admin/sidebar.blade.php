@@ -7,10 +7,10 @@
                 <a href="{{ route('admin.users') }}">Users</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="#">Jobs</a>
+                <a href="{{ route('admin.jobs') }}">Jobs</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="#">Job Application</a>
+                <a href="{{ route('admin.jobApplications') }}">Job Application</a>
             </li>
             </li>   
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">

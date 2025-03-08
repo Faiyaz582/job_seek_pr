@@ -145,7 +145,7 @@
                             <input type="text" name="website" class="form-control" placeholder="Website URL">
                         </div>
 
-                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                        <button href="{{ route('front.account.myJobs') }}" type="submit" class="btn btn-primary mt-3">Submit</button>
                     </div>
                 </form>
 
