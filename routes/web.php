@@ -29,7 +29,11 @@ Route::get('/jobs',[JobsController::class,'index'])->name('jobs');
 Route::get('/jobs/detail{id}',[JobsController::class,'detail'])->name('jobDetail');
 Route::post('/apply-job', [JobsController::class, 'applyJob'])->name('applyJob');
 Route::post('/save-job', [JobsController::class, 'saveJob'])->name('saveJob');
-
+Route::get('/account/forgot-password',[AccountController::class,'forgotPassword'])->name('front.account.forgotPassword');
+Route::post('/account/process-forgot-password',[AccountController::class,'processForgotPassword'])->name('front.account.processForgotPassword');
+Route::get('/account/reset-password/{token}',[AccountController::class,'resetPassword'])->name('front.account.resetPassword');
+Route::post('/account/process-reset-password',[AccountController::class,'processResetPassword'])->name('front.account.processResetPassword');
+     
 
 Route::group(['prefix'=>'admin','middleware'=>'checkRole'],function(){
   Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
@@ -42,7 +46,8 @@ Route::group(['prefix'=>'admin','middleware'=>'checkRole'],function(){
   Route::put('/jobs/{id}',[JobController::class,'update'])->name('admin.jobs.update');
   Route::delete('/jobs',[JobController::class,'destroy'])->name('admin.jobs.destroy');
   Route::get('/jobs-applications',[JobApplicationController::class,'index'])->name('admin.jobApplications');
-
+  Route::delete('/jobs-applications',[JobApplicationController::class,'destroy'])->name('admin.jobApplications.destroy');
+  
 
 
 

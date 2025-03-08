@@ -29,7 +29,7 @@
                         </div> 
                         <div class="mb-3">
                             <label for="" class="mb-2">Confirm Password*</label>
-                            <input type="confirm_password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Please Confirm Password">
+                            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Please Confirm Password">
                             <p></p>
                         </div> 
                         <button  class="btn btn-primary mt-2">Register</button>
