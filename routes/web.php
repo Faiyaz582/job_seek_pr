@@ -62,7 +62,7 @@ Route::group(['prefix'=>'account'],function(){
         Route::get('/account/my-job-applications',[AccountController::class,'myJobApplications'])->name('front.account.myJobApplications');        
         Route::post('/account/remove-job-applications',[AccountController::class,'removeJobs'])->name('front.account.removeJobs'); 
         Route::get('/account/saved-jobs',[AccountController::class,'savedJobs'])->name('front.account.savedJobs');        
-        Route::post('/account/remove-saved-job-applications',[AccountController::class,'removeSavedJobs'])->name('front.account.removeSavedJobs'); 
+        Route::post('/account/remove-saved-job',[AccountController::class,'removeSavedJob'])->name('front.account.removeSavedJob'); 
 
       });
 });
