@@ -100,7 +100,7 @@
              data:{jobId:jobId},
              dataType:'json',
              success:function(response){
-                window.location.href='{{route("front.account.myJobs")}}';
+                window.location.href='{{route("front.account.job.myJobs")}}';
              }
          });
      }
