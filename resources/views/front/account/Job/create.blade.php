@@ -145,7 +145,7 @@
                             <input type="text" name="website" class="form-control" placeholder="Website URL">
                         </div>
 
-                        <button href="{{ route('front.account.myJobs') }}" type="submit" class="btn btn-primary mt-3">Submit</button>
+                        <button href="{{ route('front.account.job.myJobs') }}" type="submit" class="btn btn-primary mt-3">Submit</button>
                     </div>
                 </form>
 
@@ -199,7 +199,8 @@
                 .removeClass('invalid-feedback')
                 .html('')
                
-                window.location.href = "/account/my-jobs";
+                window.location.href = "{{ route('front.account.job.myJobs') }}";
+
 
             }
             else{
