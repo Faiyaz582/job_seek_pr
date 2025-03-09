@@ -27,7 +27,7 @@
                 <a href="{{ route('front.account.createJob') }}">Post a Job</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="{{ route('front.account.myJobs') }}">My Jobs</a>
+                <a href="{{ route('front.account.job.myJobs') }}">My Jobs</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="{{route('front.account.myJobApplications')}}">Jobs Applied</a>
