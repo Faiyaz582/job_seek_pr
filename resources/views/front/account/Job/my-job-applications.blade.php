@@ -35,6 +35,7 @@
                                         <th scope="col">Job Applied</th>
                                         <th scope="col">Applicants</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">My Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -48,12 +49,24 @@
                                             </td>
                                             <td>{{ \Carbon\Carbon::parse($jobApplication->applied_date)->format('d M, Y') }}</td>
                                             <td>{{$jobApplication->job->applications->count()}}</td>
+
+
                                             <td>
                                                 @if ($jobApplication->job->status==1)
                                                 <div class="job-status text-capitalize">Active</div>
                                                 @else
                                                 <div class="job-status text-capitalize">Block</div>
                                                 @endif
+                                            </td>
+                                                                                        <td>
+                                                <span class="badge 
+                                                    @if($jobApplication->job_status == 'pending') bg-warning
+                                                    @elseif($jobApplication->job_status == 'accepted') bg-success
+                                                    @else bg-danger
+                                                    @endif">
+                                                    {{ ucfirst($jobApplication->job_status) }}
+
+                                                </span>
                                             </td>
                                             <td>
                                                 <div class="action-dots float-end">

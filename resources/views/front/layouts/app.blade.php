@@ -38,7 +38,7 @@
 					@if(Auth::user()->role == 'admin') 
 						<a class="btn btn-outline-primary me-2" href= "{{ route ('admin.dashboard') }}" type="submit">Admin</a>
 					@endif
-				<a class="btn btn-outline-primary me-2" href= "{{ route ('admin.dashboard') }}" type="submit">Account</a>
+				<a class="btn btn-outline-primary me-2" href= "{{ route ('front.account.profile') }}" type="submit">Account</a>
 				@endif
 				
 				<a class="btn btn-primary" href="{{ route('front.account.createJob') }}" type="submit">Post a Job</a>

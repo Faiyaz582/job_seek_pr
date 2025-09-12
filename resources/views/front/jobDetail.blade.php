@@ -109,12 +109,14 @@
                         </div>
                     </div>
                     <div class="descript_wrap white-bg">
-                        <table class="table table-striped"> ">
+                        <table class="table table-striped">
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Mobile</th>
                                 <th>Applied Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
                             </tr>
                             @if($applications->isNotEmpty())
                                 @foreach($applications as $application)
@@ -123,6 +125,28 @@
                                         <td>{{ $application->user->email }}</td>
                                         <td>{{ $application->user->mobile }}</td>
                                         <td>{{ \Carbon\Carbon::parse($application->applied_date)->format('d M, Y') }}</td>
+                                        <td>
+                                            <span class="badge
+                                                @if($application->job_status == 'pending') bg-warning
+                                                @elseif($application->job_status == 'accepted') bg-success 
+                                                @else bg-danger 
+                                                @endif">
+                                                {{ ucfirst($application->job_status) }}
+
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <form action="{{route('applications.updateStatus', $application->id)}}" method="POST" style="display:inline;">
+                                              @csrf
+                                              <input type="hidden" name="job_status" value="accepted">
+                                                <button type="submit" class="btn btn-sm btn-success">Accept</button> 
+                                            </form>
+                                            <form action="{{route('applications.updateStatus', $application->id)}}" method="POST" style="display:inline;">
+                                              @csrf
+                                              <input type="hidden" name="job_status" value="rejected">
+                                                <button type="submit" class="btn btn-sm btn-danger">Reject</button>
+                                        </td>
+
                                     </tr>
                                 @endforeach
                             @endif

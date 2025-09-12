@@ -70,6 +70,39 @@
                         <button type="button" class="btn btn-primary">Update</button>
                     </div>
                 </div>                
+
+                <!-- Job Alert Preferences Form NEW -->
+                {{-- <div class="card border-0 shadow mb-4">
+                    <div class="card-body p-4">
+                        <h4>Job Alert Preferences</h4>
+                        <form action="{{ route('front.account.saveJobAlert') }}" method="POST">
+                            @csrf
+                            <div class="mb-4">
+                                <label class="mb-2">Category:</label>
+                                <select name="category_id" class="form-select">
+                                    <option value="">Any</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="mb-2">Job Type:</label>
+                                <select name="job_type_id" class="form-select">
+                                    <option value="">Any</option>
+                                    @foreach($jobTypes as $jobType)
+                                        <option value="{{ $jobType->id }}">{{ $jobType->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="mb-2">Location:</label>
+                                <input type="text" name="location" placeholder="Location (optional)" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Preferences</button>
+                        </form>
+                    </div>
+                </div>                 --}}
             </div>
         </div>
     </div>

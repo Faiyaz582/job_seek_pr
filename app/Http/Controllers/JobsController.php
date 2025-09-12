@@ -181,7 +181,8 @@ class JobsController extends Controller
 
     }
 
-    public function saveJob(Request $request){
+    public function saveJob(Request $request)
+    {
         $id = $request->id;
 
         $job = Job::find($id); 
@@ -218,4 +219,27 @@ class JobsController extends Controller
             'status' => true,
         ]);
     }
+    // Accept / Reject applicant
+public function updateApplicationStatus(Request $request, $id)
+{
+    $application = JobApplication::findOrFail($id);
+
+    // Make sure only employer of the job can update
+    if ($application->employer_id !== Auth::id()) {
+        abort(403, 'Unauthorized action.');
+    }
+
+    $request->validate([
+        'job_status' => 'required|in:pending,accepted,rejected'
+    ]);
+
+    $application->update([
+        'job_status' => $request->job_status,
+    ]);
+
+    return back()->with('success', 'Application status updated successfully.');
+}
+
+
+
 }
